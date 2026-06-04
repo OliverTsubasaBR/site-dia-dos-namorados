@@ -1,0 +1,377 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Feliz Dia dos Namorados</title>
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: "Segoe UI", Arial, sans-serif;
+    }
+
+    body {
+      min-height: 100vh;
+      background: linear-gradient(135deg, #ff758c, #ff7eb3, #7f53ac);
+      color: white;
+      overflow-x: hidden;
+    }
+
+    header {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 30px;
+      position: relative;
+    }
+
+    .hero {
+      max-width: 800px;
+      background: rgba(255, 255, 255, 0.15);
+      padding: 40px;
+      border-radius: 30px;
+      backdrop-filter: blur(12px);
+      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.25);
+      animation: fadeIn 1.5s ease;
+    }
+
+    .hero h1 {
+      font-size: 3rem;
+      margin-bottom: 15px;
+    }
+
+    .hero p {
+      font-size: 1.2rem;
+      line-height: 1.7;
+      margin-bottom: 25px;
+    }
+
+    .heart {
+      font-size: 4rem;
+      animation: pulse 1.5s infinite;
+      margin-bottom: 20px;
+    }
+
+    button {
+      border: none;
+      padding: 15px 30px;
+      border-radius: 999px;
+      background: white;
+      color: #ff4f81;
+      font-size: 1rem;
+      font-weight: bold;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+
+    button:hover {
+      transform: scale(1.08);
+      background: #ffe4ec;
+    }
+
+    section {
+      padding: 70px 25px;
+      max-width: 1100px;
+      margin: auto;
+    }
+
+    .card {
+      background: rgba(255, 255, 255, 0.16);
+      border-radius: 25px;
+      padding: 35px;
+      margin-bottom: 35px;
+      backdrop-filter: blur(10px);
+      box-shadow: 0 15px 40px rgba(0, 0, 0, 0.18);
+    }
+
+    h2 {
+      font-size: 2rem;
+      margin-bottom: 20px;
+      text-align: center;
+    }
+
+    .letter {
+      font-size: 1.15rem;
+      line-height: 1.8;
+      text-align: center;
+    }
+
+    .counter {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 15px;
+      margin-top: 25px;
+    }
+
+    .counter div {
+      background: rgba(255, 255, 255, 0.22);
+      padding: 20px;
+      border-radius: 18px;
+      text-align: center;
+    }
+
+    .counter span {
+      font-size: 2rem;
+      font-weight: bold;
+      display: block;
+    }
+
+    .gallery {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 18px;
+      margin-top: 25px;
+    }
+
+    .photo {
+      height: 220px;
+      border-radius: 20px;
+      background: rgba(255, 255, 255, 0.25);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 3rem;
+      overflow: hidden;
+    }
+
+    .photo img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .reasons {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 18px;
+      margin-top: 25px;
+    }
+
+    .reason {
+      background: rgba(255, 255, 255, 0.22);
+      padding: 22px;
+      border-radius: 18px;
+      line-height: 1.6;
+    }
+
+    footer {
+      text-align: center;
+      padding: 40px 20px;
+      font-size: 1.1rem;
+    }
+
+    .floating-heart {
+      position: fixed;
+      bottom: -30px;
+      font-size: 24px;
+      animation: floatUp 4s linear forwards;
+      pointer-events: none;
+      z-index: 999;
+    }
+
+    @keyframes pulse {
+      0%, 100% {
+        transform: scale(1);
+      }
+      50% {
+        transform: scale(1.18);
+      }
+    }
+
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(25px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @keyframes floatUp {
+      from {
+        transform: translateY(0) rotate(0deg);
+        opacity: 1;
+      }
+      to {
+        transform: translateY(-110vh) rotate(360deg);
+        opacity: 0;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .hero h1 {
+        font-size: 2.2rem;
+      }
+
+      .counter {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .gallery {
+        grid-template-columns: 1fr;
+      }
+
+      .reasons {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <header>
+    <div class="hero">
+      <div class="heart">❤️</div>
+
+      <h1>Feliz Dia dos Namorados, Rafinha s2</h1>
+
+      <p>
+        Esse site foi uma forma que encontrei para mostrar o quanto você é especial para mim.
+        A vida contigo é muito mais leve!
+      </p>
+
+      <button onclick="showLove()">Surpresa Incrível!</button>
+    </div>
+  </header>
+
+  <section>
+    <div class="card">
+      <h2>Que seja o primeiro de muitos...</h2>
+      <p class="letter">
+        Desde que você chegou, tudo ficou diferente.  
+        As conversas ficaram mais leves, os dias ficaram mais felizes
+        e até os pequenos momentos passaram a ter um significado especial.
+        <br><br>
+        Obrigado por ser carinho, companhia, risada e paz.
+        Que esse seja só mais um Dia dos Namorados de muitos que ainda vamos viver juntos.
+      </p>
+    </div>
+
+    <div class="card">
+      <h2>Contagem para nosso segundo Dia dos Namorados</h2>
+
+      <div class="counter">
+        <div>
+          <span id="days">0</span>
+          Dias
+        </div>
+        <div>
+          <span id="hours">0</span>
+          Horas
+        </div>
+        <div>
+          <span id="minutes">0</span>
+          Minutos
+        </div>
+        <div>
+          <span id="seconds">0</span>
+          Segundos
+        </div>
+      </div>
+    </div>
+
+    <div class="card">
+      <h2>Nossos Momentos</h2>
+
+      <div class="gallery">
+  <div class="photo">
+    <img src="fotos/foto1.jpeg" alt="Você interesseira porque tenho uma lancha">
+  </div>
+
+  <div class="photo">
+    <img src="fotos/foto2.jpeg" alt="Eu fingindo apoio a causa LGBT">
+  </div>
+
+  <div class="photo">
+    <img src="fotos/foto3.jpeg" alt="Você com um bumbum supimpamente apetitoso">
+  </div>
+</div>
+
+    <div class="card">
+      <h2>Coisas que eu amo em você</h2>
+
+      <div class="reasons">
+        <div class="reason">
+          ❤️ Seu jeito de me fazer rir das coisas mais bestas.
+        </div>
+        <div class="reason">
+          ❤️ A forma como você torna qualquer momento especial.
+        </div>
+        <div class="reason">
+          ❤️ Seu carinho, sua presença e sua companhia.
+        </div>
+        <div class="reason">
+          ❤️ O simples fato de você ser você.
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    Feito com amor para você ❤️
+  </footer>
+
+  <script>
+    // Data do próximo Dia dos Namorados no Brasil
+    const targetDate = new Date(2027, 5, 12, 0, 0, 0).getTime();
+
+    function updateCounter() {
+      const now = new Date().getTime();
+      const distance = targetDate - now;
+
+      if (distance <= 0) {
+        document.getElementById("days").innerText = "0";
+        document.getElementById("hours").innerText = "0";
+        document.getElementById("minutes").innerText = "0";
+        document.getElementById("seconds").innerText = "0";
+        return;
+      }
+
+      const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+      const hours = Math.floor((distance / (1000 * 60 * 60)) % 24);
+      const minutes = Math.floor((distance / (1000 * 60)) % 60);
+      const seconds = Math.floor((distance / 1000) % 60);
+
+      document.getElementById("days").innerText = days;
+      document.getElementById("hours").innerText = hours;
+      document.getElementById("minutes").innerText = minutes;
+      document.getElementById("seconds").innerText = seconds;
+    }
+
+    setInterval(updateCounter, 1000);
+    updateCounter();
+
+    function showLove() {
+      alert("Eu te amo muito ❤️");
+
+      for (let i = 0; i < 25; i++) {
+        createHeart();
+      }
+    }
+
+    function createHeart() {
+      const heart = document.createElement("div");
+      heart.classList.add("floating-heart");
+      heart.innerText = "❤️";
+
+      heart.style.left = Math.random() * 100 + "vw";
+      heart.style.fontSize = Math.random() * 25 + 20 + "px";
+
+      document.body.appendChild(heart);
+
+      setTimeout(() => {
+        heart.remove();
+      }, 4000);
+    }
+  </script>
+
+</body>
+</html>
