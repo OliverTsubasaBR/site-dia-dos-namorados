@@ -1,0 +1,2421 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Feliz Dia dos Namorados</title>
+
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=IM+Fell+English:ital@0;1&display=swap');
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: "Segoe UI", -apple-system, BlinkMacSystemFont, Arial, sans-serif;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      min-height: 100vh;
+      background: linear-gradient(135deg, #ff758c 0%, #ff7eb3 50%, #7f53ac 100%);
+      color: white;
+      overflow-x: hidden;
+      position: relative;
+    }
+
+    body::before {
+      content: "";
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: radial-gradient(circle at 20% 50%, rgba(255, 255, 255, 0.08) 0%, transparent 50%),
+                  radial-gradient(circle at 80% 80%, rgba(0, 0, 0, 0.05) 0%, transparent 50%);
+      pointer-events: none;
+      z-index: 1;
+    }
+
+    header {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 40px 20px;
+      position: relative;
+      z-index: 2;
+    }
+
+    .hero {
+      max-width: 850px;
+      background: rgba(255, 255, 255, 0.12);
+      padding: 50px 45px;
+      border-radius: 35px;
+      backdrop-filter: blur(15px);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      box-shadow: 0 25px 70px rgba(0, 0, 0, 0.3), inset 0 1px 0 rgba(255, 255, 255, 0.3);
+      animation: fadeInScale 1.8s cubic-bezier(0.34, 1.56, 0.64, 1);
+    }
+
+    .hero h1 {
+      font-size: clamp(2rem, 5vw, 3.5rem);
+      margin-bottom: 20px;
+      font-weight: 700;
+      letter-spacing: -0.5px;
+      background: linear-gradient(135deg, #ffffff 0%, #f0f0f0 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .hero p {
+      font-size: clamp(1rem, 2.5vw, 1.3rem);
+      line-height: 1.8;
+      margin-bottom: 30px;
+      opacity: 0.95;
+      font-weight: 400;
+    }
+
+    .heart {
+      font-size: clamp(3rem, 8vw, 5rem);
+      animation: pulse 1.8s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+      margin-bottom: 25px;
+      display: inline-block;
+    }
+
+    button {
+      border: none;
+      padding: 16px 35px;
+      border-radius: 50px;
+      background: linear-gradient(135deg, #ffffff 0%, #f5f5f5 100%);
+      color: #ff4f81;
+      font-size: 1rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.35s cubic-bezier(0.34, 1.56, 0.64, 1);
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+      position: relative;
+      overflow: hidden;
+    }
+
+    button::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+      transition: left 0.5s;
+    }
+
+    button:hover::before {
+      left: 100%;
+    }
+
+    button:hover {
+      transform: translateY(-3px);
+      background: linear-gradient(135deg, #ffe4ec 0%, #fff0f5 100%);
+      box-shadow: 0 15px 40px rgba(0, 0, 0, 0.25);
+    }
+
+    button:active {
+      transform: translateY(-1px);
+    }
+
+    section {
+      padding: clamp(50px, 10vw, 80px) 25px;
+      max-width: 1150px;
+      margin: 0 auto;
+      position: relative;
+      z-index: 2;
+    }
+
+    .card {
+      background: rgba(255, 255, 255, 0.12);
+      border-radius: 30px;
+      padding: clamp(30px, 5vw, 45px);
+      margin-bottom: 40px;
+      backdrop-filter: blur(12px);
+      border: 1px solid rgba(255, 255, 255, 0.18);
+      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.2), inset 0 1px 0 rgba(255, 255, 255, 0.2);
+      transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+      animation: fadeInUp 0.8s ease-out forwards;
+      opacity: 0;
+    }
+
+    .card:nth-child(1) { animation-delay: 0.1s; }
+    .card:nth-child(2) { animation-delay: 0.2s; }
+    .card:nth-child(3) { animation-delay: 0.3s; }
+    .card:nth-child(4) { animation-delay: 0.4s; }
+    .card:nth-child(5) { animation-delay: 0.5s; }
+    .card:nth-child(6) { animation-delay: 0.6s; }
+
+    .card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 30px 70px rgba(0, 0, 0, 0.25), inset 0 1px 0 rgba(255, 255, 255, 0.25);
+      background: rgba(255, 255, 255, 0.15);
+    }
+
+    h2 {
+      font-size: clamp(1.5rem, 4vw, 2.3rem);
+      margin-bottom: 25px;
+      text-align: center;
+      font-weight: 700;
+      letter-spacing: -0.3px;
+    }
+
+    .letter {
+      font-size: clamp(1rem, 2vw, 1.25rem);
+      line-height: 1.9;
+      text-align: center;
+      opacity: 0.95;
+    }
+
+    .counter {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+      gap: 20px;
+      margin-top: 30px;
+    }
+
+    .counter div {
+      background: rgba(255, 255, 255, 0.15);
+      padding: 25px 15px;
+      border-radius: 22px;
+      text-align: center;
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      transition: all 0.3s ease;
+      backdrop-filter: blur(8px);
+    }
+
+    .counter div:hover {
+      background: rgba(255, 255, 255, 0.2);
+      transform: scale(1.05);
+    }
+
+    .counter span {
+      font-size: clamp(1.5rem, 3vw, 2.5rem);
+      font-weight: 700;
+      display: block;
+      margin-bottom: 8px;
+    }
+
+    .counter div > :last-child {
+      font-size: 0.95rem;
+      opacity: 0.9;
+    }
+
+    .gallery {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 22px;
+      margin-top: 30px;
+    }
+
+    .photo {
+      height: 240px;
+      border-radius: 24px;
+      background: rgba(255, 255, 255, 0.2);
+      overflow: hidden;
+      cursor: pointer;
+      transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+      position: relative;
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
+    }
+
+    .photo:hover {
+      transform: scale(1.06) translateY(-8px);
+      box-shadow: 0 25px 60px rgba(0, 0, 0, 0.3);
+    }
+
+    .photo::after {
+      content: "Clique para ampliar";
+      position: absolute;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      padding: 12px;
+      background: linear-gradient(180deg, transparent 0%, rgba(0, 0, 0, 0.6) 100%);
+      color: white;
+      font-size: 0.9rem;
+      text-align: center;
+      opacity: 0;
+      transition: opacity 0.3s ease;
+      font-weight: 500;
+    }
+
+    .photo:hover::after {
+      opacity: 1;
+    }
+
+    .photo img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      transition: transform 0.4s ease;
+    }
+
+    .photo:hover img {
+      transform: scale(1.08);
+    }
+
+    .reasons {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 22px;
+      margin-top: 30px;
+    }
+
+    .reason {
+      background: rgba(255, 255, 255, 0.15);
+      padding: 28px;
+      border-radius: 22px;
+      line-height: 1.8;
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      transition: all 0.3s ease;
+      backdrop-filter: blur(8px);
+      font-size: 1.05rem;
+    }
+
+    .reason:hover {
+      background: rgba(255, 255, 255, 0.2);
+      transform: translateY(-4px);
+    }
+
+    .quiz-topline {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 18px;
+      flex-wrap: wrap;
+      margin-bottom: 25px;
+    }
+
+    .quiz-progress {
+      text-align: center;
+      font-weight: 600;
+      opacity: 0.95;
+      font-size: 1.05rem;
+    }
+
+    .quiz-scoreboard {
+      font-weight: 600;
+      background: rgba(255, 255, 255, 0.18);
+      padding: 12px 20px;
+      border-radius: 50px;
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      font-size: 1rem;
+    }
+
+    .quiz-question {
+      text-align: center;
+      font-size: clamp(1.1rem, 3vw, 1.5rem);
+      line-height: 1.6;
+      margin-bottom: 30px;
+      font-weight: 600;
+    }
+
+    .quiz-options {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 20px;
+      margin-bottom: 25px;
+    }
+
+    .quiz-option {
+      border-radius: 24px;
+      padding: 16px;
+      background: rgba(255, 255, 255, 0.15);
+      color: white;
+      border: 2px solid rgba(255, 255, 255, 0.2);
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+      align-items: center;
+      justify-content: flex-start;
+      min-height: 380px;
+      transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+      cursor: pointer;
+      backdrop-filter: blur(8px);
+    }
+
+    .quiz-option:hover:not(:disabled) {
+      background: rgba(255, 255, 255, 0.22);
+      border-color: rgba(255, 255, 255, 0.3);
+      transform: translateY(-3px);
+    }
+
+    .quiz-option img {
+      width: 100%;
+      height: 300px;
+      object-fit: contain;
+      border-radius: 18px;
+      display: block;
+      background: rgba(255, 255, 255, 0.12);
+    }
+
+    .quiz-option span {
+      font-size: 1.05rem;
+      line-height: 1.4;
+      text-align: center;
+      font-weight: 500;
+    }
+
+    .quiz-option.text-only {
+      min-height: 110px;
+      justify-content: center;
+    }
+
+    .quiz-option.text-only span {
+      font-size: 1.5rem;
+      font-weight: 700;
+    }
+
+    .quiz-option.correct {
+      background: rgba(46, 204, 113, 0.9);
+      border-color: #2ecc71;
+      color: white;
+      animation: correctPulse 0.5s ease;
+    }
+
+    .quiz-option.incorrect {
+      background: rgba(231, 76, 60, 0.9);
+      border-color: #e74c3c;
+      color: white;
+      animation: incorrectShake 0.5s ease;
+    }
+
+    .quiz-option:disabled {
+      cursor: default;
+    }
+
+    .quiz-feedback {
+      min-height: 35px;
+      text-align: center;
+      font-weight: 600;
+      margin-bottom: 18px;
+      font-size: 1.1rem;
+    }
+
+    .quiz-next {
+      display: none;
+      margin: 10px auto 0;
+    }
+
+    .quiz-result {
+      display: none;
+      text-align: center;
+      background: rgba(255, 255, 255, 0.15);
+      padding: 35px;
+      border-radius: 28px;
+      animation: fadeIn 0.6s ease;
+      border: 1px solid rgba(255, 255, 255, 0.2);
+    }
+
+    .quiz-result.active {
+      display: block;
+    }
+
+    .quiz-result h3 {
+      font-size: 2rem;
+      margin-bottom: 18px;
+      font-weight: 700;
+    }
+
+    .quiz-final-score {
+      font-size: 1.5rem;
+      font-weight: 700;
+      margin-bottom: 20px;
+    }
+
+    .game-subtitle {
+      text-align: center;
+      font-size: clamp(1rem, 2.5vw, 1.3rem);
+      line-height: 1.7;
+      margin-bottom: 25px;
+      opacity: 0.95;
+    }
+
+    .game-area {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 20px;
+      margin-top: 30px;
+    }
+
+    .game-info {
+      width: 100%;
+      max-width: 580px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 15px;
+      flex-wrap: wrap;
+      background: rgba(255, 255, 255, 0.15);
+      padding: 18px 22px;
+      border-radius: 22px;
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      backdrop-filter: blur(8px);
+    }
+
+    .game-score {
+      font-weight: 600;
+      font-size: 1.1rem;
+    }
+
+    .game-status {
+      font-size: 1rem;
+      opacity: 0.95;
+      font-weight: 500;
+    }
+
+    #flappyCanvas {
+      width: 100%;
+      max-width: 580px;
+      height: auto;
+      border-radius: 28px;
+      background: linear-gradient(180deg, #ffe4ec 0%, #ffd1dc 100%);
+      box-shadow: 0 25px 60px rgba(0, 0, 0, 0.3);
+      cursor: pointer;
+      touch-action: manipulation;
+      border: 2px solid rgba(255, 255, 255, 0.2);
+      transition: all 0.3s ease;
+    }
+
+    #flappyCanvas:hover {
+      box-shadow: 0 30px 75px rgba(0, 0, 0, 0.35);
+    }
+
+    .game-button {
+      margin-top: 8px;
+    }
+
+    .game-prize-text {
+      text-align: center;
+      font-size: 1.05rem;
+      font-weight: 600;
+      background: rgba(255, 255, 255, 0.15);
+      padding: 14px 22px;
+      border-radius: 50px;
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      backdrop-filter: blur(8px);
+    }
+
+    .feedback-button {
+      display: none;
+      margin-top: 10px;
+      background: linear-gradient(135deg, #fff5c7 0%, #f6d365 100%);
+      color: #7a3f00;
+      border: 2px solid rgba(122, 63, 0, 0.3);
+      box-shadow: 0 12px 35px rgba(0, 0, 0, 0.25);
+    }
+
+    .feedback-button:hover {
+      background: linear-gradient(135deg, #fffadb 0%, #fce8a8 100%);
+    }
+
+    .feedback-button.active {
+      display: inline-block;
+      animation: fadeIn 0.6s ease;
+    }
+
+    .high-scores {
+      width: 100%;
+      max-width: 580px;
+      background: rgba(255, 255, 255, 0.15);
+      padding: 22px 26px;
+      border-radius: 24px;
+      text-align: center;
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      backdrop-filter: blur(8px);
+    }
+
+    .high-scores h3 {
+      margin-bottom: 16px;
+      font-size: 1.3rem;
+      font-weight: 700;
+    }
+
+    .high-scores ol {
+      list-style-position: inside;
+      line-height: 2;
+      font-weight: 500;
+    }
+
+    .prize-popup,
+    .help-popup,
+    .feedback-popup,
+    .thankyou-popup {
+      display: none;
+      position: fixed;
+      inset: 0;
+      z-index: 3000;
+      background: rgba(0, 0, 0, 0.85);
+      align-items: center;
+      justify-content: center;
+      padding: 30px;
+      backdrop-filter: blur(4px);
+    }
+
+    .prize-popup.active,
+    .help-popup.active,
+    .feedback-popup.active,
+    .thankyou-popup.active {
+      display: flex;
+      animation: backdropFadeIn 0.3s ease;
+    }
+
+    .prize-popup-box,
+    .help-popup-box,
+    .thankyou-popup-box {
+      max-width: 580px;
+      width: 100%;
+      background: linear-gradient(135deg, #ff758c 0%, #ff7eb3 50%, #7f53ac 100%);
+      color: white;
+      padding: 42px;
+      border-radius: 32px;
+      text-align: center;
+      box-shadow: 0 30px 90px rgba(0, 0, 0, 0.5);
+      animation: modalFadeIn 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+    }
+
+    .prize-popup-box h2,
+    .help-popup-box h2,
+    .thankyou-popup-box h2 {
+      margin-bottom: 20px;
+      font-size: 2rem;
+      font-weight: 700;
+    }
+
+    .prize-popup-box p,
+    .help-popup-box p,
+    .thankyou-popup-box p {
+      font-size: 1.25rem;
+      line-height: 1.7;
+      margin-bottom: 28px;
+      opacity: 0.95;
+    }
+
+    .feedback-letter {
+      max-width: 800px;
+      width: 100%;
+      max-height: 88vh;
+      overflow-y: auto;
+      color: #3b2411;
+      padding: 50px 48px;
+      border-radius: 12px;
+      position: relative;
+      background:
+        radial-gradient(circle at 20% 15%, rgba(255, 255, 255, 0.5), transparent 24%),
+        radial-gradient(circle at 80% 80%, rgba(120, 62, 20, 0.15), transparent 28%),
+        linear-gradient(135deg, #f7e2b7 0%, #e8c98f 45%, #d9ad69 100%);
+      box-shadow:
+        0 0 0 12px rgba(96, 52, 17, 0.3),
+        0 30px 100px rgba(0, 0, 0, 0.7),
+        inset 0 0 50px rgba(88, 43, 8, 0.3);
+      animation: modalFadeIn 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+    }
+
+    .feedback-letter::before {
+      content: "";
+      position: absolute;
+      inset: 20px;
+      border: 2px solid rgba(96, 52, 17, 0.4);
+      border-radius: 4px;
+      pointer-events: none;
+    }
+
+    .feedback-letter::after {
+      content: "✦";
+      position: absolute;
+      top: 20px;
+      left: 50%;
+      transform: translateX(-50%);
+      color: rgba(96, 52, 17, 0.6);
+      font-size: 1.9rem;
+    }
+
+    .feedback-letter h2 {
+      font-family: "Cinzel", Garamond, Georgia, serif;
+      color: #4b2b12;
+      font-size: 2.2rem;
+      margin-bottom: 30px;
+      letter-spacing: 1.5px;
+      font-weight: 700;
+    }
+
+    .feedback-letter-text {
+      white-space: pre-line;
+      font-family: "IM Fell English", Garamond, Georgia, serif;
+      font-size: 1.3rem;
+      line-height: 1.85;
+      text-align: left;
+      color: #3b2411;
+      text-shadow: 0 1px 2px rgba(255, 255, 255, 0.3);
+    }
+
+    .close-feedback {
+      margin: 32px auto 0;
+      display: block;
+      background: #5c2f12;
+      color: #f7e2b7;
+      border: 2px solid rgba(255, 235, 190, 0.5);
+      font-weight: 600;
+    }
+
+    .close-feedback:hover {
+      background: #7a3f18;
+      border-color: rgba(255, 235, 190, 0.7);
+    }
+
+    .treasure-area {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 20px;
+    }
+
+    .treasure-hint {
+      font-size: 1.1rem;
+      opacity: 0.95;
+      margin-bottom: 5px;
+      font-weight: 500;
+    }
+
+    .treasure-chest {
+      width: 160px;
+      height: 125px;
+      position: relative;
+      cursor: pointer;
+      background: transparent;
+      padding: 0;
+      border-radius: 20px;
+      transform-origin: center;
+      transition: transform 0.3s ease;
+    }
+
+    .treasure-chest:hover {
+      transform: scale(1.1);
+      background: transparent;
+    }
+
+    .chest-lid {
+      position: absolute;
+      left: 15px;
+      top: 8px;
+      width: 130px;
+      height: 48px;
+      background: linear-gradient(135deg, #8b4513 0%, #d99235 100%);
+      border: 4px solid #5a2d0c;
+      border-radius: 24px 24px 10px 10px;
+      transition: transform 0.5s cubic-bezier(0.34, 1.56, 0.64, 1), top 0.5s ease;
+      transform-origin: bottom left;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+    }
+
+    .chest-body {
+      position: absolute;
+      left: 10px;
+      bottom: 8px;
+      width: 140px;
+      height: 72px;
+      background: linear-gradient(135deg, #9b4f16 0%, #e09b3d 100%);
+      border: 4px solid #5a2d0c;
+      border-radius: 10px 10px 20px 20px;
+      box-shadow: inset 0 2px 5px rgba(0, 0, 0, 0.2);
+    }
+
+    .chest-lock {
+      position: absolute;
+      left: 64px;
+      bottom: 48px;
+      width: 36px;
+      height: 36px;
+      background: linear-gradient(135deg, #ffd700 0%, #ffed4e 100%);
+      border: 3px solid #8a6d00;
+      border-radius: 10px;
+      z-index: 2;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+    }
+
+    .treasure-chest.open .chest-lid {
+      transform: rotate(-35deg) translate(-12px, -25px);
+      top: -5px;
+    }
+
+    .prize-message {
+      display: none;
+      background: rgba(255, 255, 255, 0.2);
+      padding: 20px 26px;
+      border-radius: 24px;
+      line-height: 1.7;
+      animation: fadeIn 0.6s ease;
+      border: 1px solid rgba(255, 255, 255, 0.3);
+      font-weight: 500;
+    }
+
+    .prize-message.active {
+      display: block;
+    }
+
+    .help-buttons {
+      display: flex;
+      gap: 16px;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    .accept-help {
+      background: linear-gradient(135deg, #2ecc71 0%, #27ae60 100%);
+      color: white;
+      font-weight: 600;
+    }
+
+    .accept-help:hover {
+      background: linear-gradient(135deg, #3dd97f 0%, #2ecc71 100%);
+      transform: translateY(-3px);
+    }
+
+    .reject-help {
+      background: linear-gradient(135deg, #e74c3c 0%, #c0392b 100%);
+      color: white;
+      font-weight: 600;
+    }
+
+    .reject-help:hover {
+      background: linear-gradient(135deg, #ec7063 0%, #e74c3c 100%);
+      transform: translateY(-3px);
+    }
+
+    .trap-notification {
+      display: none;
+      position: fixed;
+      left: 50%;
+      bottom: 30px;
+      transform: translateX(-50%);
+      z-index: 3500;
+      width: calc(100% - 40px);
+      max-width: 600px;
+      background: rgba(30, 15, 45, 0.98);
+      color: white;
+      border: 2px solid rgba(255, 100, 150, 0.5);
+      border-radius: 26px;
+      padding: 24px 26px;
+      box-shadow: 0 25px 70px rgba(0, 0, 0, 0.5);
+      text-align: center;
+      animation: notificationIn 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+      backdrop-filter: blur(8px);
+    }
+
+    .trap-notification.active {
+      display: block;
+    }
+
+    .trap-notification strong {
+      display: block;
+      font-size: 1.2rem;
+      margin-bottom: 10px;
+      font-weight: 700;
+    }
+
+    .trap-notification p {
+      line-height: 1.6;
+      font-size: 1.05rem;
+    }
+
+    .trap-notification button {
+      margin-top: 16px;
+      padding: 10px 20px;
+      font-size: 0.95rem;
+    }
+
+    footer {
+      text-align: center;
+      padding: 50px 20px;
+      font-size: 1.15rem;
+      position: relative;
+      z-index: 2;
+      font-weight: 500;
+      opacity: 0.95;
+    }
+
+    .floating-heart {
+      position: fixed;
+      bottom: -30px;
+      font-size: 24px;
+      animation: floatUp 4.5s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
+      pointer-events: none;
+      z-index: 999;
+      filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.2));
+    }
+
+    .modal {
+      display: none;
+      position: fixed;
+      z-index: 2000;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.88);
+      align-items: center;
+      justify-content: center;
+      padding: 30px;
+      backdrop-filter: blur(4px);
+    }
+
+    .modal.active {
+      display: flex;
+      animation: backdropFadeIn 0.3s ease;
+    }
+
+    .modal-box {
+      max-width: 950px;
+      width: 100%;
+      text-align: center;
+      animation: modalFadeIn 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+    }
+
+    .modal-box img {
+      max-width: 100%;
+      max-height: 75vh;
+      object-fit: contain;
+      border-radius: 26px;
+      box-shadow: 0 30px 80px rgba(0, 0, 0, 0.6);
+      border: 2px solid rgba(255, 255, 255, 0.15);
+    }
+
+    .modal-caption {
+      margin-top: 20px;
+      font-size: 1.2rem;
+      line-height: 1.7;
+      color: white;
+      background: rgba(255, 255, 255, 0.12);
+      padding: 16px 24px;
+      border-radius: 22px;
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      font-weight: 500;
+    }
+
+    .close-modal {
+      position: fixed;
+      top: 25px;
+      right: 35px;
+      font-size: 3.5rem;
+      color: white;
+      cursor: pointer;
+      z-index: 2100;
+      line-height: 1;
+      transition: all 0.3s ease;
+      filter: drop-shadow(0 2px 8px rgba(0, 0, 0, 0.3));
+    }
+
+    .close-modal:hover {
+      transform: scale(1.2) rotate(90deg);
+      color: #ffe4ec;
+    }
+
+    @keyframes fadeInScale {
+      from {
+        opacity: 0;
+        transform: scale(0.92);
+      }
+      to {
+        opacity: 1;
+        transform: scale(1);
+      }
+    }
+
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @keyframes pulse {
+      0%, 100% {
+        transform: scale(1);
+      }
+      50% {
+        transform: scale(1.22);
+      }
+    }
+
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @keyframes modalFadeIn {
+      from {
+        opacity: 0;
+        transform: scale(0.92) translateY(-20px);
+      }
+      to {
+        opacity: 1;
+        transform: scale(1) translateY(0);
+      }
+    }
+
+    @keyframes backdropFadeIn {
+      from {
+        opacity: 0;
+      }
+      to {
+        opacity: 1;
+      }
+    }
+
+    @keyframes notificationIn {
+      from {
+        opacity: 0;
+        transform: translateX(-50%) translateY(30px);
+      }
+      to {
+        opacity: 1;
+        transform: translateX(-50%) translateY(0);
+      }
+    }
+
+    @keyframes floatUp {
+      from {
+        transform: translateY(0) rotate(0deg);
+        opacity: 1;
+      }
+      to {
+        transform: translateY(-110vh) rotate(360deg);
+        opacity: 0;
+      }
+    }
+
+    @keyframes correctPulse {
+      0% { transform: scale(1); }
+      50% { transform: scale(1.05); }
+      100% { transform: scale(1); }
+    }
+
+    @keyframes incorrectShake {
+      0%, 100% { transform: translateX(0); }
+      25% { transform: translateX(-8px); }
+      75% { transform: translateX(8px); }
+    }
+
+    @media (max-width: 768px) {
+      .hero {
+        padding: 40px 30px;
+      }
+
+      .hero h1 {
+        font-size: 2rem;
+      }
+
+      .hero p {
+        font-size: 1.05rem;
+      }
+
+      .counter {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .gallery {
+        grid-template-columns: 1fr;
+      }
+
+      .reasons {
+        grid-template-columns: 1fr;
+      }
+
+      .quiz-options {
+        grid-template-columns: 1fr;
+      }
+
+      .modal-box img {
+        max-height: 60vh;
+      }
+
+      .modal-caption {
+        font-size: 1rem;
+      }
+
+      .close-modal {
+        top: 18px;
+        right: 25px;
+        font-size: 2.8rem;
+      }
+
+      .game-info {
+        justify-content: center;
+        text-align: center;
+      }
+
+      .help-buttons {
+        flex-direction: column;
+      }
+
+      .feedback-letter {
+        padding: 40px 30px;
+      }
+
+      .feedback-letter h2 {
+        font-size: 1.7rem;
+      }
+
+      .feedback-letter-text {
+        font-size: 1.1rem;
+      }
+
+      .prize-popup-box,
+      .help-popup-box,
+      .thankyou-popup-box {
+        padding: 35px;
+      }
+
+      section {
+        padding: 50px 20px;
+      }
+
+      .card {
+        padding: 30px 20px;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .hero h1 {
+        font-size: 1.6rem;
+      }
+
+      .hero p {
+        font-size: 0.95rem;
+      }
+
+      .counter {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 12px;
+      }
+
+      .counter span {
+        font-size: 1.5rem;
+      }
+
+      h2 {
+        font-size: 1.3rem;
+      }
+
+      .quiz-question {
+        font-size: 1rem;
+      }
+
+      .close-modal {
+        font-size: 2.2rem;
+      }
+
+      .trap-notification {
+        width: calc(100% - 20px);
+        padding: 18px 16px;
+        border-radius: 20px;
+      }
+
+      .trap-notification strong {
+        font-size: 1rem;
+      }
+
+      .trap-notification p {
+        font-size: 0.95rem;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <header>
+    <div class="hero">
+      <div class="heart">❤️</div>
+
+      <h1>Feliz Dia dos Namorados, Rafinha s2</h1>
+
+      <p>
+        Esse site foi uma forma que encontrei para mostrar o quanto você é especial para mim.
+        A vida contigo é muito mais leve!
+      </p>
+
+      <button onclick="showLove()">Surpresa Incrível!</button>
+    </div>
+  </header>
+
+  <section>
+    <div class="card">
+      <h2>Que seja o primeiro de muitos...</h2>
+      <p class="letter">
+        Desde que você chegou, tudo ficou diferente.
+        As conversas ficaram mais leves, os dias ficaram mais felizes
+        e até os pequenos momentos passaram a ter um significado especial.
+        <br><br>
+        Obrigado por ser carinho, companhia, risada e paz.
+        Que esse seja só mais um Dia dos Namorados de muitos que ainda vamos viver juntos.
+      </p>
+    </div>
+
+    <div class="card">
+      <h2>Contagem para nosso segundo Dia dos Namorados</h2>
+
+      <div class="counter">
+        <div>
+          <span id="days">0</span>
+          Dias
+        </div>
+        <div>
+          <span id="hours">0</span>
+          Horas
+        </div>
+        <div>
+          <span id="minutes">0</span>
+          Minutos
+        </div>
+        <div>
+          <span id="seconds">0</span>
+          Segundos
+        </div>
+      </div>
+    </div>
+
+    <div class="card">
+      <h2>Nossos Momentos</h2>
+
+      <div class="gallery">
+        <div class="photo">
+          <img src="fotos/foto1.jpeg" alt="Você com um bumbum supimpamente apetitoso">
+        </div>
+
+        <div class="photo">
+          <img src="fotos/foto2.jpeg" alt="Eu fingindo apoio a causa LGBT">
+        </div>
+
+        <div class="photo">
+          <img src="fotos/foto3.jpeg" alt="Você interesseira porque tenho uma lancha">
+        </div>
+      </div>
+    </div>
+
+    <div class="card">
+      <h2>Coisas que eu amo em você</h2>
+
+      <div class="reasons">
+        <div class="reason">
+          ❤️ Seu jeito de me fazer rir das coisas mais bestas.
+        </div>
+        <div class="reason">
+          ❤️ A forma como você torna qualquer momento especial.
+        </div>
+        <div class="reason">
+          ❤️ Seu carinho, sua presença e sua companhia.
+        </div>
+        <div class="reason">
+          ❤️ O simples fato de você ser você.
+        </div>
+      </div>
+    </div>
+
+    <div class="card" id="quizCard">
+      <h2>Quiz</h2>
+
+      <div class="quiz-topline">
+        <p class="quiz-progress" id="quizProgress">
+          Pergunta 1 de 5
+        </p>
+
+        <p class="quiz-scoreboard">
+          Acertos: <span id="quizCorrectCount">0</span> |
+          Erros: <span id="quizWrongCount">0</span>
+        </p>
+      </div>
+
+      <div id="quizGameArea">
+        <h3 class="quiz-question" id="quizQuestion">
+          Pergunta aqui
+        </h3>
+
+        <div class="quiz-options" id="quizOptions"></div>
+
+        <p class="quiz-feedback" id="quizFeedback"></p>
+
+        <button class="quiz-next" id="quizNextButton">
+          Próxima pergunta
+        </button>
+      </div>
+
+      <div class="quiz-result" id="quizResult">
+        <h3>Resultado final</h3>
+
+        <p class="quiz-final-score" id="quizFinalScore">
+          Você fez 0 de 5 pontos.
+        </p>
+
+        <p>
+          Mande a foto da pontuação para Alexandre, o Grande, para reivindicar seu prêmio
+        </p>
+      </div>
+    </div>
+
+    <div class="card" id="flappyGameCard">
+      <h2>Flappy Gay Bird</h2>
+
+      <p class="game-subtitle">
+        Ajuda a Rafinha a desviar dos perrengues da vida.
+        <br>
+        Clique, toque na tela ou aperte espaço para voar.
+      </p>
+
+      <div class="game-area">
+        <div class="game-info">
+          <div class="game-score">
+            Pontuação: <span id="flappyScore">0</span>
+          </div>
+
+          <div class="game-status" id="flappyStatus">
+            Clique, toque ou aperte espaço para começar.
+          </div>
+        </div>
+
+        <canvas id="flappyCanvas" width="560" height="720" tabindex="0"></canvas>
+
+        <button class="game-button" id="flappyButton">
+          Começar jogo
+        </button>
+
+        <button class="feedback-button" id="feedbackButton">
+          Clique aqui para dar seu feedback
+        </button>
+
+        <p class="game-prize-text">
+          Chegue a 50 pontos e ganhe uma surpresa
+        </p>
+
+        <div class="high-scores">
+          <h3>Top 5 pontuações</h3>
+          <ol id="highScoresList">
+            <li>0 pontos</li>
+            <li>0 pontos</li>
+            <li>0 pontos</li>
+            <li>0 pontos</li>
+            <li>0 pontos</li>
+          </ol>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    Feito com amor para você ❤️
+  </footer>
+
+  <div class="modal" id="imageModal">
+    <span class="close-modal" id="closeModal">&times;</span>
+
+    <div class="modal-box">
+      <img id="modalImage" src="" alt="">
+      <p class="modal-caption" id="modalCaption"></p>
+    </div>
+  </div>
+
+  <div class="prize-popup" id="prizePopup">
+    <div class="prize-popup-box">
+      <h2>Surpresa desbloqueada!</h2>
+
+      <div class="treasure-area">
+        <p class="treasure-hint" id="treasureHint">
+          Clique no baú para revelar sua recompensa.
+        </p>
+
+        <button class="treasure-chest" id="treasureChest" aria-label="Abrir baú">
+          <span class="chest-lid"></span>
+          <span class="chest-body"></span>
+          <span class="chest-lock"></span>
+        </button>
+
+        <p class="prize-message" id="prizeMessage">
+          O verdadeiro prêmio é a sensação de superar seus próprios limites!
+        </p>
+
+        <button id="closePrizePopup">Jogar de novo</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="feedback-popup" id="feedbackPopup">
+    <div class="feedback-letter">
+      <h2>Carta de Feedback</h2>
+
+      <div class="feedback-letter-text">Minha adorada Rafinha,
+
+Escrevo-te como quem molha a pena no próprio coração,
+à luz mansa de uma vela que parece saber teu nome.
+Há amores que chegam como vento de verão,
+mas o teu veio como carta esperada há muito tempo:
+dobrada com cuidado, perfumada de saudade,
+guardando em cada linha uma ternura feita para ficar.
+
+Se meus dias fossem páginas amareladas pelo tempo,
+teu sorriso seria a tinta que jamais se apaga.
+Teus olhos, minha querida, têm esse encanto antigo
+das noites em que se esperava à janela,
+não por notícias do mundo,
+mas por um sinal da pessoa amada.
+
+Rafinha, em ti encontrei a delicadeza das flores prensadas
+entre livros que ninguém esquece;
+a doçura das palavras escritas devagar;
+a beleza rara de um amor que não precisa gritar,
+pois fala baixinho
+e ainda assim transforma tudo.
+
+Quisera eu enviar-te esta carta por um mensageiro a cavalo,
+atravessando campos, chuvas e madrugadas,
+apenas para que chegasse às tuas mãos
+a certeza que carrego no peito:
+amo-te com a calma dos tempos antigos
+e com a força serena de quem te escolhe todos os dias.
+
+Recebe, pois, estas palavras singelas,
+como quem recebe uma rosa entre os dedos.
+E guarda contigo esta verdade, minha baianinha:
+se o destino me concedesse mil vidas,
+em cada uma delas eu procuraria teu nome
+até encontrá-lo escrito no mesmo lugar —
+no centro do meu coração.
+
+Com todo o amor que em mim cabe,
+teu, hoje e enquanto houver caminho..</div>
+
+      <button class="close-feedback" id="closeFeedbackButton">
+        Fechar carta
+      </button>
+    </div>
+  </div>
+
+  <div class="thankyou-popup" id="thankyouPopup">
+    <div class="thankyou-popup-box">
+      <h2>Obrigado por jogar!</h2>
+
+      <p>
+        Esse site foi uma pequena forma de mostrar o quanto você é especial para mim.
+        Espero que tenha conseguido te arrancar um sorriso e causado um quentinho no seu coração.
+        Te amo!
+      </p>
+
+      <button id="closeThankyouButton">
+        Fechar
+      </button>
+    </div>
+  </div>
+
+  <div class="help-popup" id="helpPopup">
+    <div class="help-popup-box">
+      <h2>Vai uma ajuda aí, nubinha?</h2>
+      <p>
+        Ao aceitar, começa o jogo com 30 pontos.
+      </p>
+
+      <div class="help-buttons">
+        <button class="accept-help" id="acceptHelpButton">
+          Aceitar, sou boiola
+        </button>
+
+        <button class="reject-help" id="rejectHelpButton">
+          Recusar, sou hétero
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <div class="trap-notification" id="trapNotification">
+    <strong>Cano troll superado.</strong>
+    <p>
+      Esse cano sem aura não vai mais se repetir. Agora você consegue chegar aos 50 pontos sem nenhuma interrupção.
+    </p>
+    <button id="closeTrapNotification">Entendi</button>
+  </div>
+
+  <script>
+    try {
+      localStorage.removeItem("flappyGayBirdHighScores");
+      localStorage.removeItem("flappyGayBirdLossesBeforeWin");
+      localStorage.removeItem("flappyGayBirdFirst50TrapUsed");
+      localStorage.removeItem("flappyGayBirdHelpAccepted");
+    } catch (error) {}
+
+    const targetDate = new Date(2027, 5, 12, 0, 0, 0).getTime();
+
+    function updateCounter() {
+      const now = new Date().getTime();
+      const distance = targetDate - now;
+
+      if (distance <= 0) {
+        document.getElementById("days").innerText = "0";
+        document.getElementById("hours").innerText = "0";
+        document.getElementById("minutes").innerText = "0";
+        document.getElementById("seconds").innerText = "0";
+        return;
+      }
+
+      const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+      const hours = Math.floor((distance / (1000 * 60 * 60)) % 24);
+      const minutes = Math.floor((distance / (1000 * 60)) % 60);
+      const seconds = Math.floor((distance / 1000) % 60);
+
+      document.getElementById("days").innerText = days;
+      document.getElementById("hours").innerText = hours;
+      document.getElementById("minutes").innerText = minutes;
+      document.getElementById("seconds").innerText = seconds;
+    }
+
+    setInterval(updateCounter, 1000);
+    updateCounter();
+
+    function showLove() {
+      alert("Eu te amo muito ❤️");
+
+      for (let i = 0; i < 25; i++) {
+        createHeart();
+      }
+    }
+
+    function createHeart() {
+      const heart = document.createElement("div");
+      heart.classList.add("floating-heart");
+      heart.innerText = "❤️";
+
+      heart.style.left = Math.random() * 100 + "vw";
+      heart.style.fontSize = Math.random() * 25 + 20 + "px";
+
+      document.body.appendChild(heart);
+
+      setTimeout(function() {
+        heart.remove();
+      }, 4500);
+    }
+
+    const modal = document.getElementById("imageModal");
+    const modalImage = document.getElementById("modalImage");
+    const modalCaption = document.getElementById("modalCaption");
+    const closeModalButton = document.getElementById("closeModal");
+    const galleryImages = document.querySelectorAll(".photo img");
+
+    galleryImages.forEach(function(image) {
+      image.addEventListener("click", function() {
+        modal.classList.add("active");
+
+        modalImage.src = image.src;
+        modalImage.alt = image.alt;
+        modalCaption.innerText = image.alt;
+
+        document.body.style.overflow = "hidden";
+      });
+    });
+
+    function closeModal() {
+      modal.classList.remove("active");
+      modalImage.src = "";
+      modalImage.alt = "";
+      modalCaption.innerText = "";
+      document.body.style.overflow = "auto";
+    }
+
+    closeModalButton.addEventListener("click", closeModal);
+
+    modal.addEventListener("click", function(event) {
+      if (event.target === modal) {
+        closeModal();
+      }
+    });
+
+    const gameCard = document.getElementById("flappyGameCard");
+    const canvas = document.getElementById("flappyCanvas");
+    const ctx = canvas.getContext("2d");
+    const scoreElement = document.getElementById("flappyScore");
+    const statusElement = document.getElementById("flappyStatus");
+    const gameButton = document.getElementById("flappyButton");
+    const feedbackButton = document.getElementById("feedbackButton");
+    const feedbackPopup = document.getElementById("feedbackPopup");
+    const closeFeedbackButton = document.getElementById("closeFeedbackButton");
+    const thankyouPopup = document.getElementById("thankyouPopup");
+    const closeThankyouButton = document.getElementById("closeThankyouButton");
+    const highScoresList = document.getElementById("highScoresList");
+    const prizePopup = document.getElementById("prizePopup");
+    const closePrizePopup = document.getElementById("closePrizePopup");
+    const treasureChest = document.getElementById("treasureChest");
+    const prizeMessage = document.getElementById("prizeMessage");
+    const treasureHint = document.getElementById("treasureHint");
+    const helpPopup = document.getElementById("helpPopup");
+    const acceptHelpButton = document.getElementById("acceptHelpButton");
+    const rejectHelpButton = document.getElementById("rejectHelpButton");
+    const trapNotification = document.getElementById("trapNotification");
+    const closeTrapNotification = document.getElementById("closeTrapNotification");
+
+    const quizProgress = document.getElementById("quizProgress");
+    const quizCorrectCount = document.getElementById("quizCorrectCount");
+    const quizWrongCount = document.getElementById("quizWrongCount");
+    const quizGameArea = document.getElementById("quizGameArea");
+    const quizQuestion = document.getElementById("quizQuestion");
+    const quizOptions = document.getElementById("quizOptions");
+    const quizFeedback = document.getElementById("quizFeedback");
+    const quizNextButton = document.getElementById("quizNextButton");
+    const quizResult = document.getElementById("quizResult");
+    const quizFinalScore = document.getElementById("quizFinalScore");
+
+    const birdImage = new Image();
+    birdImage.src = "fotos/rafinha-flappy.png";
+
+    const auraAudio = new Audio("fotos/aura.mp3");
+    const gayAudio = new Audio("fotos/gay.mp3");
+    const noAuraAudio = new Audio("fotos/voce-nao-tem-aura.mp3");
+
+    auraAudio.preload = "auto";
+    gayAudio.preload = "auto";
+    noAuraAudio.preload = "auto";
+
+    auraAudio.loop = true;
+    gayAudio.loop = true;
+    noAuraAudio.loop = false;
+
+    auraAudio.volume = 0.25;
+    gayAudio.volume = 0.25;
+    noAuraAudio.volume = 0.25;
+
+    const pipeLabels = [
+      "BOLETOS",
+      "CORINTHIANS",
+      "SEGUNDA",
+      "FOME",
+      "SONO",
+      "ACADEMIA",
+      "DRAMA",
+      "CAOS"
+    ];
+
+    const QUIZ_IMAGE_EXTENSION = ".jpeg";
+
+    const quizQuestions = [
+      {
+        question: `QUAL A MINHA COMIDA FAVORITA?`,
+        options: [
+          "COMIDA JAPONESA",
+          "PIZZA",
+          "HAMBÚRGUER",
+          "POKE"
+        ],
+        correctIndex: 2,
+        noImages: false
+      },
+      {
+        question: `O QUE EU MAIS ACHO BONITO EM VOCÊ?`,
+        options: [
+          "NÃO CONSIGO PENSAR EM NADA",
+          "SUA BUNDA 🔥",
+          "SEU AUTISMO (PERSONALIDADE)",
+          "SEU SORRISO"
+        ],
+        correctIndex: 0,
+        noImages: false
+      },
+      {
+        question: `QUAL MEU CAMPEÃO FAVORITO DO LOLZINHO?`,
+        options: [
+          "JHIN",
+          "SHEN",
+          "AKALI",
+          "LUCIAN"
+        ],
+        correctIndex: 3,
+        noImages: false
+      },
+      {
+        question: `QUEM É MEU ARTISTA FAVORITO?`,
+        options: [
+          "KENDRICK LAMAR",
+          "BRUNO MARS",
+          "SYSTEM OF A DOWN",
+          "KYAN"
+        ],
+        correctIndex: 1,
+        noImages: false
+      },
+      {
+        question: `COMO SE ESCREVE "TSUBASA" EM JAPONÊS (SÍMBOLO DA MINHA TATTO)`,
+        options: [
+          "笑顔",
+          "翼",
+          "Tsubasa",
+          "自閉症"
+        ],
+        correctIndex: 1,
+        noImages: true
+      }
+    ];
+
+    let currentQuizIndex = 0;
+    let quizAnswered = false;
+    let quizCorrectAnswers = 0;
+    let quizWrongAnswers = 0;
+
+    function updateQuizScoreboard() {
+      quizCorrectCount.innerText = quizCorrectAnswers;
+      quizWrongCount.innerText = quizWrongAnswers;
+    }
+
+    function getQuizImageSrc(questionIndex, optionIndex) {
+      return "fotos/perg" + (questionIndex + 1) + "foto" + (optionIndex + 1) + QUIZ_IMAGE_EXTENSION;
+    }
+
+    function renderQuiz() {
+      const currentQuestion = quizQuestions[currentQuizIndex];
+
+      quizAnswered = false;
+
+      quizGameArea.style.display = "block";
+      quizResult.classList.remove("active");
+
+      quizProgress.innerText = "Pergunta " + (currentQuizIndex + 1) + " de " + quizQuestions.length;
+      quizQuestion.innerText = currentQuestion.question;
+      quizOptions.innerHTML = "";
+      quizFeedback.innerText = "";
+      quizNextButton.style.display = "none";
+
+      updateQuizScoreboard();
+
+      currentQuestion.options.forEach(function(optionText, optionIndex) {
+        const optionButton = document.createElement("button");
+        optionButton.classList.add("quiz-option");
+
+        if (currentQuestion.noImages) {
+          optionButton.classList.add("text-only");
+        }
+
+        if (!currentQuestion.noImages) {
+          const optionImage = document.createElement("img");
+          optionImage.src = getQuizImageSrc(currentQuizIndex, optionIndex);
+          optionButton.appendChild(optionImage);
+        }
+
+        const optionSpan = document.createElement("span");
+        optionSpan.innerText = optionText;
+        optionButton.appendChild(optionSpan);
+
+        optionButton.addEventListener("click", function() {
+          if (quizAnswered) return;
+
+          quizAnswered = true;
+
+          const isCorrect = optionIndex === currentQuestion.correctIndex;
+
+          if (isCorrect) {
+            quizCorrectAnswers++;
+            optionButton.classList.add("correct");
+            quizFeedback.innerText = "✓ Correto!";
+            quizFeedback.style.color = "#2ecc71";
+          } else {
+            quizWrongAnswers++;
+            optionButton.classList.add("incorrect");
+            quizFeedback.innerText = "✗ Errado!";
+            quizFeedback.style.color = "#e74c3c";
+          }
+
+          updateQuizScoreboard();
+
+          Array.from(quizOptions.children).forEach(function(btn) {
+            btn.disabled = true;
+          });
+
+          quizNextButton.style.display = "block";
+        });
+
+        quizOptions.appendChild(optionButton);
+      });
+    }
+
+    quizNextButton.addEventListener("click", function() {
+      if (currentQuizIndex >= quizQuestions.length - 1) {
+        finishQuiz();
+        return;
+      }
+
+      currentQuizIndex++;
+      renderQuiz();
+    });
+
+    function finishQuiz() {
+      quizGameArea.style.display = "none";
+      quizProgress.innerText = "Quiz finalizado";
+
+      quizFinalScore.innerText =
+        "Você fez " + quizCorrectAnswers + " de " + quizQuestions.length + " pontos.";
+
+      quizResult.classList.add("active");
+    }
+
+    let gameState = "waiting";
+    let animationId = null;
+    let frame = 0;
+    let score = 0;
+    let pipes = [];
+    let pipesCreated = 0;
+
+    let lossesBeforeWin = 0;
+    let first50TrapUsed = false;
+    let helpAccepted = false;
+    let highScores = [];
+    let trapNotificationTimeout = null;
+    let thankyouAlreadyShown = false;
+
+    const WIN_SCORE = 50;
+    const HELP_START_SCORE = 30;
+    const HELP_OFFER_LOSSES = 10;
+    const groundHeight = 50;
+
+    const gravity = 0.153;
+    const jumpForce = -5.65;
+    const pipeSpeed = 1.4;
+    const pipeSpawnRate = 155;
+
+    const normalPipeGap = 276;
+    const trapPipeGap = 32;
+
+    const bird = {
+      x: 102,
+      y: 305,
+      width: 58,
+      height: 116,
+      velocity: 0,
+      rotation: 0
+    };
+
+    function getStartingScore() {
+      return helpAccepted ? HELP_START_SCORE : 0;
+    }
+
+    function getTrapPipeNumberForThisRun() {
+      return WIN_SCORE - getStartingScore();
+    }
+
+    function acceptHelp() {
+      helpAccepted = true;
+      helpPopup.classList.remove("active");
+      statusElement.innerText = "Ajuda aceita. O jogo agora começa com 30 pontos.";
+      startGame();
+    }
+
+    function rejectHelp() {
+      helpPopup.classList.remove("active");
+      statusElement.innerText = "Ajuda recusada. Sem aura, sem atalhos.";
+    }
+
+    function offerHelpIfNeeded() {
+      if (
+        lossesBeforeWin > 0 &&
+        lossesBeforeWin % HELP_OFFER_LOSSES === 0 &&
+        !helpAccepted
+      ) {
+        helpPopup.classList.add("active");
+      }
+    }
+
+    function showTrapNotification() {
+      trapNotification.classList.add("active");
+
+      clearTimeout(trapNotificationTimeout);
+
+      trapNotificationTimeout = setTimeout(function() {
+        trapNotification.classList.remove("active");
+      }, 8500);
+    }
+
+    function hideTrapNotification() {
+      trapNotification.classList.remove("active");
+      clearTimeout(trapNotificationTimeout);
+    }
+
+    function openFeedbackLetter() {
+      feedbackPopup.classList.add("active");
+      document.body.style.overflow = "hidden";
+    }
+
+    function closeFeedbackLetterAndShowThanks() {
+      feedbackPopup.classList.remove("active");
+      document.body.style.overflow = "auto";
+
+      if (!thankyouAlreadyShown) {
+        thankyouAlreadyShown = true;
+
+        setTimeout(function() {
+          thankyouPopup.classList.add("active");
+          document.body.style.overflow = "hidden";
+        }, 180);
+      }
+    }
+
+    function closeThankyouPopup() {
+      thankyouPopup.classList.remove("active");
+      document.body.style.overflow = "auto";
+    }
+
+    function getCurrentMainAudio() {
+      return helpAccepted ? gayAudio : auraAudio;
+    }
+
+    function playAudio(audio) {
+      audio.volume = 0.25;
+
+      const playPromise = audio.play();
+
+      if (playPromise !== undefined) {
+        playPromise.catch(function() {});
+      }
+    }
+
+    function stopAudio(audio, resetToStart) {
+      audio.pause();
+
+      if (resetToStart) {
+        audio.currentTime = 0;
+      }
+    }
+
+    function stopAllGameAudio(resetToStart) {
+      stopAudio(auraAudio, resetToStart);
+      stopAudio(gayAudio, resetToStart);
+      stopAudio(noAuraAudio, resetToStart);
+    }
+
+    function startMainMusicFromBeginning() {
+      stopAllGameAudio(true);
+
+      const currentMainAudio = getCurrentMainAudio();
+      currentMainAudio.currentTime = 0;
+      currentMainAudio.volume = 0.25;
+
+      if (isGameVisible()) {
+        playAudio(currentMainAudio);
+      }
+    }
+
+    function playNoAuraAudio() {
+      stopAudio(auraAudio, true);
+      stopAudio(gayAudio, true);
+
+      noAuraAudio.currentTime = 0;
+      noAuraAudio.volume = 0.25;
+
+      if (isGameVisible()) {
+        playAudio(noAuraAudio);
+      }
+    }
+
+    noAuraAudio.addEventListener("ended", function() {
+      noAuraAudio.currentTime = 0;
+    });
+
+    function isGameVisible() {
+      const rect = gameCard.getBoundingClientRect();
+
+      return (
+        rect.bottom > 0 &&
+        rect.top < window.innerHeight
+      );
+    }
+
+    function checkGameVisibility() {
+      if (!isGameVisible()) {
+        stopAllGameAudio(true);
+      }
+    }
+
+    window.addEventListener("scroll", checkGameVisibility, { passive: true });
+    window.addEventListener("resize", checkGameVisibility);
+
+    if ("IntersectionObserver" in window) {
+      const gameObserver = new IntersectionObserver(function(entries) {
+        entries.forEach(function(entry) {
+          if (!entry.isIntersecting) {
+            stopAllGameAudio(true);
+          }
+        });
+      }, {
+        threshold: 0.08
+      });
+
+      gameObserver.observe(gameCard);
+    }
+
+    function saveHighScore(newScore) {
+      highScores.push(newScore);
+
+      highScores.sort(function(a, b) {
+        return b - a;
+      });
+
+      highScores = highScores.slice(0, 5);
+
+      renderHighScores();
+    }
+
+    function renderHighScores() {
+      highScoresList.innerHTML = "";
+
+      for (let i = 0; i < 5; i++) {
+        const li = document.createElement("li");
+        li.innerText = (highScores[i] || 0) + " pontos";
+        highScoresList.appendChild(li);
+      }
+    }
+
+    function resetLossesBeforeWin() {
+      lossesBeforeWin = 0;
+    }
+
+    function resetTreasureChest() {
+      treasureChest.classList.remove("open");
+      prizeMessage.classList.remove("active");
+      treasureHint.style.display = "block";
+    }
+
+    function resetGame() {
+      gameState = "waiting";
+      frame = 0;
+      score = getStartingScore();
+      pipes = [];
+      pipesCreated = 0;
+
+      bird.x = 102;
+      bird.y = 305;
+      bird.velocity = 0;
+      bird.rotation = 0;
+
+      scoreElement.innerText = score;
+      statusElement.innerText = "Clique, toque ou aperte espaço para começar.";
+      gameButton.innerText = "Começar jogo";
+
+      prizePopup.classList.remove("active");
+      resetTreasureChest();
+
+      cancelAnimationFrame(animationId);
+      drawGame();
+    }
+
+    function startGame() {
+      gameState = "playing";
+      frame = 0;
+      score = getStartingScore();
+      pipes = [];
+      pipesCreated = 0;
+
+      bird.y = 305;
+      bird.velocity = jumpForce;
+      bird.rotation = -0.2;
+
+      scoreElement.innerText = score;
+
+      if (helpAccepted) {
+        statusElement.innerText = "Modo ajuda ativado. Vai, Rafinha!";
+      } else {
+        statusElement.innerText = "Vai, Rafinha!";
+      }
+
+      gameButton.innerText = "Pular";
+
+      prizePopup.classList.remove("active");
+      helpPopup.classList.remove("active");
+      resetTreasureChest();
+
+      startMainMusicFromBeginning();
+
+      cancelAnimationFrame(animationId);
+      gameLoop();
+    }
+
+    function jump() {
+      bird.velocity = jumpForce;
+      bird.rotation = -0.23;
+    }
+
+    function handleGameInput() {
+      canvas.focus();
+
+      if (
+        prizePopup.classList.contains("active") ||
+        helpPopup.classList.contains("active") ||
+        feedbackPopup.classList.contains("active") ||
+        thankyouPopup.classList.contains("active") ||
+        modal.classList.contains("active")
+      ) {
+        return;
+      }
+
+      if (gameState === "waiting" || gameState === "gameOver" || gameState === "won") {
+        startGame();
+        return;
+      }
+
+      if (gameState === "playing") {
+        jump();
+      }
+    }
+
+    function createPipe() {
+      pipesCreated++;
+
+      const trapPipeNumber = getTrapPipeNumberForThisRun();
+
+      const shouldCreateTrapPipe =
+        pipesCreated === trapPipeNumber &&
+        !first50TrapUsed;
+
+      const gap = shouldCreateTrapPipe ? trapPipeGap : normalPipeGap;
+
+      const minTop = shouldCreateTrapPipe ? 250 : 90;
+      const maxTop = shouldCreateTrapPipe
+        ? 420
+        : canvas.height - groundHeight - gap - 125;
+
+      const topHeight = Math.floor(Math.random() * (maxTop - minTop + 1)) + minTop;
+
+      const label = shouldCreateTrapPipe
+        ? "SEM AURA"
+        : pipeLabels[Math.floor(Math.random() * pipeLabels.length)];
+
+      pipes.push({
+        x: canvas.width,
+        width: shouldCreateTrapPipe ? 92 : 78,
+        topHeight: topHeight,
+        bottomY: topHeight + gap,
+        passed: false,
+        label: label,
+        isTrap: shouldCreateTrapPipe
+      });
+    }
+
+    function updateGame() {
+      frame++;
+
+      bird.velocity += gravity;
+      bird.y += bird.velocity;
+
+      bird.rotation += 0.012;
+
+      if (bird.rotation > 0.4) {
+        bird.rotation = 0.4;
+      }
+
+      if (frame % pipeSpawnRate === 0) {
+        createPipe();
+      }
+
+      pipes.forEach(function(pipe) {
+        pipe.x -= pipeSpeed;
+
+        if (!pipe.passed && pipe.x + pipe.width < bird.x) {
+          pipe.passed = true;
+          score++;
+          scoreElement.innerText = score;
+
+          if (score >= WIN_SCORE) {
+            winGame();
+          }
+        }
+      });
+
+      pipes = pipes.filter(function(pipe) {
+        return pipe.x + pipe.width > -20;
+      });
+
+      if (gameState === "playing") {
+        const collision = getCollisionInfo();
+
+        if (collision.hasCollision) {
+          if (collision.isTrap) {
+            first50TrapUsed = true;
+            showTrapNotification();
+          }
+
+          endGame(collision.isTrap);
+        }
+      }
+    }
+
+    function getCollisionInfo() {
+      const hitbox = {
+        x: bird.x + bird.width * 0.22,
+        y: bird.y + bird.height * 0.14,
+        width: bird.width * 0.56,
+        height: bird.height * 0.72
+      };
+
+      if (hitbox.y <= 0) {
+        return {
+          hasCollision: true,
+          isTrap: false
+        };
+      }
+
+      if (hitbox.y + hitbox.height >= canvas.height - groundHeight) {
+        return {
+          hasCollision: true,
+          isTrap: false
+        };
+      }
+
+      for (let i = 0; i < pipes.length; i++) {
+        const pipe = pipes[i];
+
+        const topPipe = {
+          x: pipe.x,
+          y: 0,
+          width: pipe.width,
+          height: pipe.topHeight
+        };
+
+        const bottomPipe = {
+          x: pipe.x,
+          y: pipe.bottomY,
+          width: pipe.width,
+          height: canvas.height - groundHeight - pipe.bottomY
+        };
+
+        if (rectanglesCollide(hitbox, topPipe) || rectanglesCollide(hitbox, bottomPipe)) {
+          return {
+            hasCollision: true,
+            isTrap: pipe.isTrap
+          };
+        }
+      }
+
+      return {
+        hasCollision: false,
+        isTrap: false
+      };
+    }
+
+    function rectanglesCollide(a, b) {
+      return (
+        a.x < b.x + b.width &&
+        a.x + a.width > b.x &&
+        a.y < b.y + b.height &&
+        a.y + a.height > b.y
+      );
+    }
+
+    function endGame(wasTrapCollision) {
+      gameState = "gameOver";
+      saveHighScore(score);
+
+      lossesBeforeWin++;
+
+      if (wasTrapCollision) {
+        statusElement.innerText = "Fim de jogo! O último cano não tinha aura.";
+      } else {
+        statusElement.innerText = "Fim de jogo! Pontuação: " + score + ". Tenta de novo!";
+      }
+
+      gameButton.innerText = "Jogar de novo";
+
+      cancelAnimationFrame(animationId);
+      drawGame();
+
+      if (lossesBeforeWin % 10 === 0) {
+        statusElement.innerText = "Derrota número " + lossesBeforeWin + ". Você não tem aura.";
+        playNoAuraAudio();
+        offerHelpIfNeeded();
+      }
+    }
+
+    function winGame() {
+      gameState = "won";
+      saveHighScore(score);
+      resetLossesBeforeWin();
+
+      statusElement.innerText = "Você chegou a 50 pontos!";
+      gameButton.innerText = "Jogar de novo";
+      feedbackButton.classList.add("active");
+
+      cancelAnimationFrame(animationId);
+      drawGame();
+
+      resetTreasureChest();
+      prizePopup.classList.add("active");
+    }
+
+    function drawGame() {
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+      drawBackground();
+      drawPipes();
+      drawGround();
+      drawBird();
+
+      if (gameState === "waiting") {
+        drawCenterText("Clique para começar", "ou aperte espaço");
+      }
+
+      if (gameState === "gameOver") {
+        drawCenterText("Game Over", "Pontuação: " + score);
+      }
+
+      if (gameState === "won") {
+        drawCenterText("Você venceu!", "Pontuação: " + score);
+      }
+    }
+
+    function drawBackground() {
+      const gradient = ctx.createLinearGradient(0, 0, 0, canvas.height);
+      gradient.addColorStop(0, "#ffe4ec");
+      gradient.addColorStop(0.55, "#ffc1d5");
+      gradient.addColorStop(1, "#ff9fbe");
+
+      ctx.fillStyle = gradient;
+      ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+      ctx.globalAlpha = 0.35;
+      drawCloud(90, 105, 40);
+      drawCloud(420, 175, 50);
+      drawCloud(250, 310, 34);
+      ctx.globalAlpha = 1;
+    }
+
+    function drawCloud(x, y, size) {
+      ctx.fillStyle = "white";
+      ctx.beginPath();
+      ctx.arc(x, y, size, 0, Math.PI * 2);
+      ctx.arc(x + size * 1.2, y, size * 0.8, 0, Math.PI * 2);
+      ctx.arc(x - size * 1.2, y, size * 0.8, 0, Math.PI * 2);
+      ctx.fill();
+    }
+
+    function drawGround() {
+      ctx.fillStyle = "#f5d5e0";
+      ctx.fillRect(0, canvas.height - groundHeight, canvas.width, groundHeight);
+
+      ctx.strokeStyle = "rgba(255, 200, 220, 0.5)";
+      ctx.lineWidth = 2;
+      ctx.setLineDash([10, 10]);
+      ctx.beginPath();
+      ctx.moveTo(0, canvas.height - groundHeight);
+      ctx.lineTo(canvas.width, canvas.height - groundHeight);
+      ctx.stroke();
+      ctx.setLineDash([]);
+    }
+
+    function drawPipes() {
+      pipes.forEach(function(pipe) {
+        const pipeColor = pipe.isTrap ? "#ff4444" : "#a8d5ba";
+        const pipeHighlight = pipe.isTrap ? "#ff6666" : "#c8f5da";
+
+        ctx.fillStyle = pipeColor;
+        ctx.fillRect(pipe.x, 0, pipe.width, pipe.topHeight);
+        ctx.fillRect(pipe.x, pipe.bottomY, pipe.width, canvas.height - groundHeight - pipe.bottomY);
+
+        ctx.fillStyle = pipeHighlight;
+        ctx.fillRect(pipe.x, pipe.topHeight - 8, pipe.width, 8);
+        ctx.fillRect(pipe.x, pipe.bottomY, pipe.width, 8);
+
+        ctx.fillStyle = "white";
+        ctx.font = "bold 14px Arial";
+        ctx.textAlign = "center";
+        ctx.textBaseline = "middle";
+        ctx.shadowColor = "rgba(0, 0, 0, 0.5)";
+        ctx.shadowBlur = 4;
+        ctx.fillText(pipe.label, pipe.x + pipe.width / 2, pipe.topHeight + (pipe.bottomY - pipe.topHeight) / 2);
+        ctx.shadowColor = "transparent";
+      });
+    }
+
+    function drawBird() {
+      ctx.save();
+      ctx.translate(bird.x + bird.width / 2, bird.y + bird.height / 2);
+      ctx.rotate(bird.rotation);
+
+      if (birdImage.complete) {
+        ctx.drawImage(birdImage, -bird.width / 2, -bird.height / 2, bird.width, bird.height);
+      } else {
+        ctx.fillStyle = "#ff6b9d";
+        ctx.fillRect(-bird.width / 2, -bird.height / 2, bird.width, bird.height);
+      }
+
+      ctx.restore();
+    }
+
+    function drawCenterText(line1, line2) {
+      ctx.fillStyle = "rgba(0, 0, 0, 0.6)";
+      ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+      ctx.fillStyle = "white";
+      ctx.font = "bold 36px Arial";
+      ctx.textAlign = "center";
+      ctx.textBaseline = "middle";
+      ctx.shadowColor = "rgba(0, 0, 0, 0.5)";
+      ctx.shadowBlur = 6;
+      ctx.fillText(line1, canvas.width / 2, canvas.height / 2 - 40);
+
+      ctx.font = "24px Arial";
+      ctx.fillText(line2, canvas.width / 2, canvas.height / 2 + 40);
+      ctx.shadowColor = "transparent";
+    }
+
+    function gameLoop() {
+      updateGame();
+      drawGame();
+
+      animationId = requestAnimationFrame(gameLoop);
+    }
+
+    gameButton.addEventListener("click", handleGameInput);
+    canvas.addEventListener("click", handleGameInput);
+    canvas.addEventListener("touchstart", handleGameInput);
+
+    document.addEventListener("keydown", function(event) {
+      if (event.code === "Space") {
+        event.preventDefault();
+        handleGameInput();
+      }
+    });
+
+    closePrizePopup.addEventListener("click", resetGame);
+    closeFeedbackButton.addEventListener("click", closeFeedbackLetterAndShowThanks);
+    closeThankyouButton.addEventListener("click", closeThankyouPopup);
+    acceptHelpButton.addEventListener("click", acceptHelp);
+    rejectHelpButton.addEventListener("click", rejectHelp);
+    closeTrapNotification.addEventListener("click", hideTrapNotification);
+
+    treasureChest.addEventListener("click", function() {
+      if (!treasureChest.classList.contains("open")) {
+        treasureChest.classList.add("open");
+        treasureHint.style.display = "none";
+        prizeMessage.classList.add("active");
+      }
+    });
+
+    feedbackButton.addEventListener("click", openFeedbackLetter);
+
+    renderQuiz();
+    resetGame();
+  </script>
+</body>
+
+</html>
